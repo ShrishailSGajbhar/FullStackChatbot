@@ -6,6 +6,7 @@ export default function App() {
   const [result, setResult] = useState();
   const [question, setQuestion] = useState("");
   const [file, setFile] = useState(null);
+  const [userSelectedFile, setUserSelectedFile] = useState<string>("");
   const [sessionId, setSessionId] = useState('');
 
   const handleQuestionChange = (event: any) => {
@@ -15,6 +16,7 @@ export default function App() {
   const handleFileChange = (event: any) => {
     const file = event.target.files[0] as File; 
     setFile(event.target.files[0]);
+    setUserSelectedFile(file.name);
     const formData = new FormData();
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -38,14 +40,12 @@ export default function App() {
             setUploadResult(data.result);
   
             // Build the user_selected_files list
-            const userSelectedFiles = [];
-            if (file) {
-              userSelectedFiles.push(file.name);
-            }
-            console.log("userSelectedFiles:", userSelectedFiles);
-            fetch("http://127.0.0.1:8000/prepare_chatbot", {
+            const url = `http://127.0.0.1:8000/prepare_chatbot?uploaded_filepath=${file.name}`;
+            fetch(url, {
               method: "POST",
-              body: JSON.stringify({userSelectedFiles}),
+              headers: {
+                "Content-Type": "application/json"
+              },
             })
               .then((response) => response.json())
               .then((data) => {
@@ -80,9 +80,12 @@ export default function App() {
     if (question) {
       formData.append("question", question);
     }
-    fetch("http://127.0.0.1:8000/predict", {
+    const url = `http://127.0.0.1:8000/chat?query=${question}`;
+    fetch(url, {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json"
+      },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -121,7 +124,7 @@ export default function App() {
           )}
         </form>
         
-        <Text mt={4}>Result:</Text>
+        <Text mt={4}>Answer:</Text>
         <Text as="p" className="resultOutput">{result}</Text>
       </Box>
     </ChakraProvider>
