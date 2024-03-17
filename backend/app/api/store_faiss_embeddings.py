@@ -35,9 +35,9 @@ def save_faiss_embeddings_file(file_path: str, embeddings_folder_path:str):
     embeddings = OpenAIEmbeddings(openai_api_key = openai_api_key)
 
     if filename.endswith('.csv'):
-        db = FAISS.from_documents(documents=document, embedding=embeddings)
-    else:
-        db = FAISS.from_documents(documents=splits, embedding=embeddings)
+        splits = document
+    
+    db = FAISS.from_documents(documents=splits, embedding=embeddings)
 
     pkl = db.serialize_to_bytes()
 

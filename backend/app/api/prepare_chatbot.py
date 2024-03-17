@@ -1,5 +1,6 @@
 import os
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 from pathlib import Path
 import uuid
 
@@ -32,6 +33,7 @@ def get_chatbot_for_user_selected_file(file_path:str):
     session_id = uuid.uuid4()
     return chatbot, session_id
 
+
 @chatbot_router.post("/prepare_chatbot", description="Prepare the chatbot over user uploaded file")
 async def prepare_chatbot_over_subset(uploaded_filepath: str) -> dict:
 
@@ -49,7 +51,10 @@ async def prepare_chatbot_over_subset(uploaded_filepath: str) -> dict:
     session_id_temp = session_id
     return {"status":"Chatbot is ready..!!", "session_id":session_id}
 
-@chatbot_router.post("/chat", description="Chat with the prepared chatbot")
+class Response(BaseModel):
+    result: str | None
+
+@chatbot_router.post("/chat", description="Chat with the prepared chatbot",response_model = Response)
 async def chat_with_bot(query: str) -> dict:
     conversation_id = uuid.uuid4()
     # Check if chatbot is prepared
@@ -59,7 +64,7 @@ async def chat_with_bot(query: str) -> dict:
     # Get the response from the chatbot
     response = chatbot_router.chatbot.conversational_chat(query, conversation_id, session_id_temp)
     
-    return {"response": response}
+    return {"result": response}
 
 @chatbot_router.get("/chat_history")
 async def get_chat_history():
