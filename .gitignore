@@ -1,2 +1,4 @@
 __pycache__/
-backend/.env
+backend/app/Uploads
+backend/app/Embeddings
+backend/app/.env
