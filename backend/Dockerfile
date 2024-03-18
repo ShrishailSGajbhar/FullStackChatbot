@@ -1,25 +1,24 @@
-# pull official base image
-FROM python:3.10.1-slim-buster
+# Use the official Python 3.10 image as the base image
+FROM python:3.10-slim
 
-# Create a working directory
-RUN mkdir -p /usr/src/app
-
-# set working directory
-WORKDIR /usr/src/app
-
-# set the environment variables
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONBUFFERED 1
+ENV PYTHONUNBUFFERED 1
 
-# install system dependencies
-RUN apt-get update \
-    && apt-get -y install netcat gcc \
-    && apt-get clean
+# Create and set the working directory in the container
+WORKDIR /app
 
-# install python dependencies
-RUN pip install --upgrade pip 
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt 
+# Copy the requirements file into the container at /app
+COPY requirements.txt .
 
-# add app
+# Install any dependencies specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire application directory into the container at /app
 COPY . .
+
+# Expose port 8000 to the outside world
+EXPOSE 8000
+
+# Command to run the application
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
