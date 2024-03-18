@@ -102,8 +102,8 @@ export default function App() {
         <Text fontWeight="bold">Chat with Your Document</Text>
         <form onSubmit={handleSubmit} className="form">
           <FormControl mt={4} isInvalid={!file}>
-            <FormLabel htmlFor="file">Upload a CSV (required):</FormLabel>
-            <Input type="file" id="file" name="file" accept=".csv,.txt,.docx,.pdf" onChange={handleFileChange} className="fileInput" /> {!file && <FormErrorMessage>Please select either a CSV, DOCX, TXT or PDF file.</FormErrorMessage>}
+            <FormLabel htmlFor="file">Upload a document file (required):</FormLabel>
+            <Input type="file" id="file" name="file" accept=".csv,.txt,.docx,.pdf" onChange={handleFileChange} className="fileInput" /> {!file && <FormErrorMessage>Please upload either a PDF, DOCX, TXT or CSV file.</FormErrorMessage>}
           </FormControl>
           {file && (
             <Center mt={4}>
