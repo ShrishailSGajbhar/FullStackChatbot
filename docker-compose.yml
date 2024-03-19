@@ -5,7 +5,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "80:80"  # port 80 of the host server which accepts tcp -> 80
+      - "80:3000"  # port 80 of the host server which accepts tcp -> 80
     depends_on:
       - backend
     networks:

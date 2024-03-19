@@ -8,5 +8,4 @@ langchain
 tiktoken
 faiss-cpu
 pypdf
-sqlalchemy
-psycopg2-binary
+docx2txt
