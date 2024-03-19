@@ -18,15 +18,7 @@ services:
       - "8000:8000"  # Assuming your backend service listens on port 8000
     networks:
       - app-network
-    volumes:
-      - upload_data:/app/Uploads
-      - embedding_data:/app/Embeddings
 
-volumes:
-  upload_data: {}
-  embedding_data: {}
-  
 networks:
   app-network:
     driver: bridge
-
