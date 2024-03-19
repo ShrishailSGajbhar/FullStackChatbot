@@ -31,7 +31,7 @@ export default function App() {
           // If it's already a string, use it directly
           formData.append("file", fileContent, event.target.files[0].name);
         }
-        fetch("http://10.142.0.2:8000/upload_process_file", {
+        fetch("http://0.0.0.0:8000/upload_process_file", {
           method: "POST",
           body: formData,
         })
@@ -40,7 +40,7 @@ export default function App() {
             setUploadResult(data.result);
   
             // Build the user_selected_files list
-            const url = `http://10.142.0.2:8000/prepare_chatbot?uploaded_filepath=${file.name}`;
+            const url = `http://0.0.0.0:8000/prepare_chatbot?uploaded_filepath=${file.name}`;
             fetch(url, {
               method: "POST",
               headers: {
@@ -80,7 +80,7 @@ export default function App() {
     if (question) {
       formData.append("question", question);
     }
-    const url = `http://10.142.0.2:8000/chat?query=${question}`;
+    const url = `http://0.0.0.0:8000/chat?query=${question}`;
     fetch(url, {
       method: "POST",
       headers: {
