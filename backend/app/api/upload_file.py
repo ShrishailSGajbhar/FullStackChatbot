@@ -5,8 +5,8 @@ import shutil
 
 from .store_faiss_embeddings import save_faiss_embeddings_file
 
-file_upload_path = os.path.join(Path(__file__).parent.parent, "Uploads")
-embeddings_upload_path = os.path.join(Path(__file__).parent.parent, "Embeddings")
+file_upload_path = "/app/Uploads"
+embeddings_upload_path = "app/Embeddings"
 Path(file_upload_path).mkdir(parents=True, exist_ok=True)
 Path(embeddings_upload_path).mkdir(parents=True, exist_ok=True)
 
