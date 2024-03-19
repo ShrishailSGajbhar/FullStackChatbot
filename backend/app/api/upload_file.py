@@ -5,8 +5,6 @@ import shutil
 
 from .store_faiss_embeddings import save_faiss_embeddings_file
 
-upload_router = APIRouter()
-
 file_upload_path = os.path.join(Path(__file__).parent.parent, "Uploads")
 embeddings_upload_path = os.path.join(Path(__file__).parent.parent, "Embeddings")
 Path(file_upload_path).mkdir(parents=True, exist_ok=True)
@@ -16,6 +14,9 @@ Path(embeddings_upload_path).mkdir(parents=True, exist_ok=True)
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt', 'csv'}
 def is_allowed_file(filename: str) -> bool:
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+upload_router = APIRouter()
+
 
 @upload_router.post("/upload_process_file", description="Upload the file to chat and save its embeddings")
 async def upload_file_create_embeddings(file: UploadFile):
