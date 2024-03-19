@@ -11,13 +11,7 @@ RUN npm install
 RUN npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 COPY . .
-RUN npm run build
 
-# Stage 2: Serve the React application using Nginx
-FROM nginx:alpine
+EXPOSE 3000
 
-COPY --from=build /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]

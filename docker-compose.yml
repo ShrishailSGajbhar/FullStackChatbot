@@ -5,7 +5,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "3000:80"  # Assuming your React app runs on port 80 inside the container
+      - "3000:3000"  # Assuming your React app runs on port 80 inside the container
     depends_on:
       - backend
     networks:
