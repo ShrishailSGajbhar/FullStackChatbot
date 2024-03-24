@@ -1,9 +1,10 @@
 # Full Stack Chatbot application
 
 ## Technology Stack
-Frontend: React (with TypeScript)
-Backend: FastAPI (Python)
-Deployment: Docker & Docker Compose
+
+* Frontend: React (with TypeScript)
+* Backend: FastAPI (Python)
+* Deployment: Docker & Docker Compose
 
 In this project, we build a chatbot application which takes a document file (pdf, txt, docx, csv) as an input and answers user's query. The goal of this application is to accurately provide answers based on the uploaded file. This application could be used as an assistant to quickly answer questions or summarize facts from files containing large amounts of text data, making our lives easier.
 
@@ -14,6 +15,7 @@ In this project you find 2 directories
 1. `backend` containing the server side **python** code
 2. `frontend` containing the client side **typescript** code.
 
+## How to run using local virtual environment 
 ### Backend
 
 **Requirements**: 
@@ -54,6 +56,12 @@ The project structure within the `frontend` directory follows the official `crea
 
 The page will reload if you make edits. You will also see any lint errors in the console.
 
+## How to run using docker compose
+
+* Run the command `docker-compose up -d` to start the frontend and backend containers. 
+* Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to access the Swagger UI
+* Open [http://localhost:3000](http://localhost:3000) to access the frontend UI
+ 
 ## TODO
 
 1. Handle edge cases when the user has uploads a very large file (>100mb) or a unsupported file type like video/mp3.
