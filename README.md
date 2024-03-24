@@ -12,7 +12,7 @@ In this project, we build a chatbot application which takes a document file (pdf
 In this project you find 2 directories
 
 1. `backend` containing the server side **python** code
-2. `frontend` containing the client side **typescript** code.\
+2. `frontend` containing the client side **typescript** code.
 
 ### Backend
 
