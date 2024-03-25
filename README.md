@@ -63,6 +63,9 @@ The page will reload if you make edits. You will also see any lint errors in the
 * Open [http://localhost:3000](http://localhost:3000) to access the frontend UI
 
 ## Demo
+
+Click on the image below to see the demo 👇
+
 [![Click here to see the demo](https://img.youtube.com/vi/bHc8UxhjPog/0.jpg)](https://www.youtube.com/watch?v=bHc8UxhjPog)
 
 ## TODO
