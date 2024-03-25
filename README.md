@@ -61,7 +61,10 @@ The page will reload if you make edits. You will also see any lint errors in the
 * Run the command `docker-compose up -d` to start the frontend and backend containers. 
 * Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to access the Swagger UI
 * Open [http://localhost:3000](http://localhost:3000) to access the frontend UI
- 
+
+## Demo
+[![Click here to see the demo](https://img.youtube.com/vi/bHc8UxhjPog/0.jpg)](https://www.youtube.com/watch?v=bHc8UxhjPog)
+
 ## TODO
 
 1. Handle edge cases when the user has uploads a very large file (>100mb) or a unsupported file type like video/mp3.
